@@ -7,9 +7,9 @@ int main(void)
     float amt;
     do
     {
-    amt = get_float("Change owed: ");
+        amt = get_float("Change owed: ");
     }
-    while(amt < 0);
+    while (amt < 0);
     // convert the dollar amount to cents
     int cents = round(amt * 100);
     
@@ -17,13 +17,13 @@ int main(void)
     int quarts, dimes, nicks, pens = 0;
     quarts = cents / 25;
     int coins = quarts;
-    int amt_remain = cents - (quarts*25);
+    int amt_remain = cents - (quarts * 25);
     
     // how many dimes
     if (amt_remain > 0)
     {
         dimes = amt_remain / 10;
-        amt_remain = amt_remain - (dimes*10);
+        amt_remain = amt_remain - (dimes * 10);
         coins = coins + dimes;
     }
     
