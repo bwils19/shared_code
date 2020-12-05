@@ -10,7 +10,8 @@ int main(int argc, string argv[])
     {
         string key = argv[1];
         int ndigicnt = 0;
-        for (int i=0; key[i] != '\0'; i++)
+        // Check if each value in the input is a number
+        for (int i = 0; key[i] != '\0'; i++)
         {
             if (isdigit(key[i]))
             {
@@ -20,45 +21,40 @@ int main(int argc, string argv[])
                 ndigicnt++;
             }
         }
-        if (ndigicnt ==0)
+        if (ndigicnt == 0)
         {
+            // convert key to an integer
             int intkey = atoi(key);
             string ptext = get_string("plaintext: ");
             printf("ciphertext: ");
             
-            for (int j=0; ptext[j]!= '\0'; j++)
+            // Convert each character to rotate as far as the key says
+            for (int j = 0; ptext[j] != '\0'; j++)
             {
                 if (isalpha(ptext[j]))
-                    {
+                {
+                    // If the character is uppercase
                     if (isupper(ptext[j]))
                     {
                         printf("%c", (((ptext[j] + intkey) - 65) % 26) + 65);
                     }
-
+                    // If the character is lowercase
                     if (islower(ptext[j]))
                     {
                         printf("%c", (((ptext[j] + intkey) - 97) % 26) + 97);
                     }
                 }
-                else //print character as is
+                else 
                 {
                     printf("%c", ptext[j]);
                 }
             }
-                // int lett = ptext[j] - '0';
-                // int shift = key - '0';
-                // printf("%d ",ptext[j]);
-                // printf(" ");
-                // printf(" %c : %d\n", ptext[j],ptext[j]);
-                
-                
-                // printf("adjust: %i\n", lett + shift);
-                // printf("%s", ctext);
-                printf("\n");
-                return 0;
+            printf("\n");
+            return 0;
         }
         else
         {
+            // Send error message
             printf("Usage: ./caesar key");
             return 1;
         }
@@ -66,6 +62,7 @@ int main(int argc, string argv[])
     }
     if (argc == 1 || argc > 2)
     {
+        //Send error message
         printf("Usage: ./caesar key");
         return 1;
     }
