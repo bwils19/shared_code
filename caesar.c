@@ -54,6 +54,7 @@ int main(int argc, string argv[])
                 
                 // printf("adjust: %i\n", lett + shift);
                 // printf("%s", ctext);
+                printf("\n");
                 return 0;
         }
         else
