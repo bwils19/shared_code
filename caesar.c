@@ -54,16 +54,19 @@ int main(int argc, string argv[])
                 
                 // printf("adjust: %i\n", lett + shift);
                 // printf("%s", ctext);
+                return 0;
         }
         else
         {
             printf("Usage: ./caesar key");
+            return 1;
         }
 
     }
     if (argc == 1 || argc > 2)
     {
         printf("Usage: ./caesar key");
+        return 1;
     }
     printf("\n");
 }
