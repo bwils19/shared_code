@@ -62,8 +62,8 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
                 
                 // Apply the sepia value to each of the colors in each pixel
                 image[i][j].rgbtRed = sepiaRed;
-                image[i][j].rgbtBlue = sepiaGreen;
-                image[i][j].rgbtGreen = sepiaBlue;
+                image[i][j].rgbtGreen = sepiaGreen;
+                image[i][j].rgbtBlue = sepiaBlue;
         }
     }
     return;
