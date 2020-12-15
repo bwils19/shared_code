@@ -15,10 +15,10 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
                 int green = image[i][j].rgbtGreen;
                 
                 // Get the average of the 3 colors in each pixel
-                float average = (red + blue + green)/3;
+                int average = (red + blue + green)/3;
                 
                 // Get the average of the 3 colors
-                average = round(average);
+                // average = round(average);
                 
                 // Apply the average value back to each color scale for each pixel
                 image[i][j].rgbtRed = average;
