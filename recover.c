@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     // reading a block of 512 in memory card
     // BYTE buffer[block_size];
     
-    while(fread(buffer, sizeof(unsigned char), 512, file))
+    while (fread(buffer, sizeof(unsigned char), 512, file))
     {
         if (buffer[0] == 0xFF && buffer[1] == 0xd8 && buffer[2] == 0xFF && (buffer[3] & 0xF0) == 0xe0)
         {
