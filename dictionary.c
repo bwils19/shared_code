@@ -31,9 +31,9 @@ bool check(const char *word)
     int h_index = hash(word);
     node *holder = table[h_index];
 
-    while(holder != NULL)
+    while (holder != NULL)
     {
-        if(strcasecmp(holder->word, word) == 0)
+        if (strcasecmp(holder->word, word) == 0)
         {
             return true;
         }
@@ -67,13 +67,13 @@ bool load(const char *dictionary)
     {
         return 1;
     }
-        char word[LENGTH + 1];
+    char word[LENGTH + 1];
 
     // scan through words and load to node
-    while(fscanf(file, "%s", word) != EOF)
+    while (fscanf(file, "%s", word) != EOF)
     {
         node *n = malloc(sizeof(node));
-        if(n == NULL)
+        if (n == NULL)
         {
             unload();
             return false;
@@ -113,7 +113,7 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
         node *list = table[i];
         node *holder = list;
