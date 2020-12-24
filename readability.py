@@ -10,8 +10,9 @@ sent = re.split('[!?.]', s)
 
 # remove the weird empty character from the list in sentences
 for i in sent:
-    if i == '':
+    if (i == '') or (i ==  '"'):
         sent.remove(i)
+
 sent = len(sent)        
     
 # calculate the grade
