@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedbackmulti').innerHTML = 'CORRECT!';
+                });
+                let incorrect = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener('click', function() {
+                        incorrect[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedbackmulti').innerHTML = 'INCORRECT!';
+                    });
+                }
+                document.querySelector('#check').addEventListener('click', function() {
+                    let answer = document.querySelector('input');
+                    if (answer.value === 'A black hole') {
+                        answer.style.backgroundColor = 'green';
+                        document.querySelector('#feedbackfree').innerHTML = 'CORRECT!';
+                    }
+                    else {
+                        answer.style.backgroundColor = 'red';
+                        document.querySelector('#feedbackfree').innerHTML = 'INCORRECT!';
+                    }
+
+                    });
+            })
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>
+                    What is the smallest planet in the solar system by mass?
+                </h3>
+                <button class="incorrect">Jupiter</button>
+                <button class="correct">Mercury</button>
+                <button class="incorrect">Earth</button>
+                <button class="incorrect">Mars</button>
+
+                <p id=feedbackmulti></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>
+                    What has a gravitational pull so strong that even light cannot escape it?
+                </h3>
+                <input type=text></input>
+                <button id=check>Check Answer</button>
+                <p id=feedbackfree></p>
+
+            </div>
+
+        </div>
+    </body>
+</html>
