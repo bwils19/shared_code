@@ -92,7 +92,7 @@ def buy():
             return apology("Missing Symbol", 400)
 
         # Ensure input is a postive integer
-        elif not isinstance(share, int) or share < 1:
+        if not isinstance(share, int) or share < 1:
             return apology("Please provide valid share amount", 400)
 
         cash = db.execute("SELECT cash FROM users WHERE id = :uid", uid=int(session['user_id']))
@@ -244,6 +244,12 @@ def register():
         # make sure passwords match
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match")
+
+        # get a list of usernames already registerd
+        user_list = db.execute("SELECT DISTINCT(username) FROM users")
+
+        if request.form.get("password") in user_list:
+            return apology("That username is not available. Please choose a new one.")
 
         # save user
         result = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
