@@ -92,6 +92,8 @@ def buy():
         if not share.isdigit() or int(share) < 1:
             return apology("Please provide valid share amount", 400)
 
+        share = int(share)
+
         cash = db.execute("SELECT cash FROM users WHERE id = :uid", uid=int(session['user_id']))
 
         # determine value of request
