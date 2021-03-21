@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <p>One share of {{ name }} ({{ symbol }}) costs {{ price }} USD.</p>
+    <p>The 52 week high is ${{ high }} and the 52 week low is ${{ low }}.</p>
+{% endblock %}
