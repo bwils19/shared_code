@@ -91,9 +91,12 @@ def buy():
         if req == None:
             return apology("Missing Symbol", 400)
 
-        # Ensure input is a postive integer
-        if not isinstance(share, int) or share < 1:
+        if not request.form.get("shares") or int(request.form.get("shares")) < 1:
             return apology("Please provide valid share amount", 400)
+
+        # Ensure input is a postive integer
+        # if not isinstance(share, int) or share < 1:
+            # return apology("Please provide valid share amount", 400)
 
         cash = db.execute("SELECT cash FROM users WHERE id = :uid", uid=int(session['user_id']))
 
@@ -245,26 +248,13 @@ def register():
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match")
 
-        # get a list of usernames already registerd
-        # users = db.execute("SELECT DISTINCT(username) FROM users")
-        # user_list = []
-        # for u in range(len(users)):
-            # user_list.append(users[u]['username'])
-        # print(user_list)
-
         rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
         if len(rows) >= 1:
             return apology("That username is not available. Please choose a new one.")
 
-        # if request.form.get("password") in user_list:
-            # return apology("That username is not available. Please choose a new one.")
-
         # save user
         result = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
                             username=request.form.get("username"), hash=generate_password_hash(request.form.get("password")))
-
-        # if not result:
-            # return apology("username is not available, please provide a different username")
 
         session["user_id"] = result
 
