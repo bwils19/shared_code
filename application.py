@@ -84,19 +84,13 @@ def buy():
 
         # get all information for the requested stock symbol
         req = lookup(request.form.get("symbol"))
-
         share = request.form.get("shares")
-        share = int(share)
 
         if req == None:
             return apology("Missing Symbol", 400)
 
-        if not request.form.get("shares") or int(request.form.get("shares")) < 1:
+        if not share.isdigit() or int(share) < 1:
             return apology("Please provide valid share amount", 400)
-
-        # Ensure input is a postive integer
-        # if not isinstance(share, int) or share < 1:
-            # return apology("Please provide valid share amount", 400)
 
         cash = db.execute("SELECT cash FROM users WHERE id = :uid", uid=int(session['user_id']))
 
