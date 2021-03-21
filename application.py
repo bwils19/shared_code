@@ -246,7 +246,11 @@ def register():
             return apology("passwords do not match")
 
         # get a list of usernames already registerd
-        user_list = db.execute("SELECT DISTINCT(username) FROM users")
+        users = db.execute("SELECT DISTINCT(username) FROM users")
+        user_list = []
+        for u in range(len(users)):
+            user_list.append(users[u]['username'])
+        print(user_list)
 
         if request.form.get("password") in user_list:
             return apology("That username is not available. Please choose a new one.")
